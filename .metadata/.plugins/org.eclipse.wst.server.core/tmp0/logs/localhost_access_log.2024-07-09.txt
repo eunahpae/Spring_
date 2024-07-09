@@ -1,0 +1,2 @@
+127.0.0.1 - - [09/Jul/2024:11:20:56 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [09/Jul/2024:11:20:56 +0900] "GET /biz/WEB-INF/classes/com/springbook/ioc/injection/CollectionBean.java HTTP/1.1" 404 721
