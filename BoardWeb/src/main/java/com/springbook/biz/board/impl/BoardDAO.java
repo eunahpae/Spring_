@@ -20,12 +20,11 @@ public class BoardDAO {
 	private ResultSet rs = null;
 
 	// SQL 명령어들
-	private final String BOARD_INSERT = "insert into board(seq, title, writer, content) "
-			+ "values(select nvl(max(seq), 0)+1 from board,?,?,?)";
+	private final String BOARD_INSERT = "insert into board(seq, title, writer, content) values((select nvl(max(seq), 0)+1 from board),?,?,?)";
 	private final String BOARD_UPDATE = "update board set title=?, content=? where seq=?";
 	private final String BOARD_DELETE = "delete board where seq=?";
-	private final String BOARD_GET = "select * form board where seq=?";
-	private final String BOARD_LIST = "select * form board order by seq desc";
+	private final String BOARD_GET = "select * from board where seq=?";
+	private final String BOARD_LIST = "select * from board order by seq desc";
 
 	// CRUD 기능의 메소드 구현
 	// 글 등록

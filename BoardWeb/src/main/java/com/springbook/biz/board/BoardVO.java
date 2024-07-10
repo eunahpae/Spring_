@@ -19,6 +19,7 @@ public class BoardVO {
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
+	
 
 	public String getTitle() {
 		return title;

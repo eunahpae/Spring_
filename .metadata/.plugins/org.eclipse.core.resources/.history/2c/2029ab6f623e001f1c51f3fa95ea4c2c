@@ -1,0 +1,10 @@
+package com.springbook.biz.user;
+
+public class UserServiceClient {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
