@@ -8,3 +8,8 @@
 1720591887781	Copy compilation unit
 1720592144860	Copy compilation unit
 1720592417481	Rename type 'ArouondAdvice'
+1720659875017	Rename compilation unit 'UserServiceimpl.java'
+1720677205722	Rename resource 'sample.jsp'
+1720677520241	Move file
+1720679548233	Rename package 'com.springbook.biz.user.Impl'
+1720682469500	Rename type 'JDBCUtill'

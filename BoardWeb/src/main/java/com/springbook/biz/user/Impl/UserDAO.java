@@ -1,4 +1,4 @@
-package com.springbook.biz.user.Impl;
+package com.springbook.biz.user.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 
 import org.springframework.stereotype.Repository;
 
-import com.springbook.biz.common.JDBCUtill;
+import com.springbook.biz.common.JDBCUtil;
 import com.springbook.biz.user.UserVO;
 
 // DAO(Data Access Objecet)
@@ -27,7 +27,7 @@ public class UserDAO {
 		UserVO user = null;
 		try {
 			System.out.println("===> JDBC로 getUser() 기능 처리");
-			conn = JDBCUtill.getConnection();
+			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(USER_GET);
 			stmt.setString(1, vo.getId());
 			stmt.setString(2, vo.getPassword());
@@ -42,7 +42,7 @@ public class UserDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			JDBCUtill.close(rs, stmt, conn);
+			JDBCUtil.close(rs, stmt, conn);
 		}
 		return user;
 	}
