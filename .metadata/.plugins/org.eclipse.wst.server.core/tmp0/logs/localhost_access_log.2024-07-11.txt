@@ -101,3 +101,5 @@
 127.0.0.1 - - [11/Jul/2024:16:19:29 +0900] "GET / HTTP/1.1" 404 807
 0:0:0:0:0:0:0:1 - - [11/Jul/2024:16:19:30 +0900] "GET /getBoardList.jsp HTTP/1.1" 200 7789
 0:0:0:0:0:0:0:1 - - [11/Jul/2024:16:22:19 +0900] "GET /getBoard.jsp?seq=25 HTTP/1.1" 404 804
+127.0.0.1 - - [11/Jul/2024:17:09:49 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [11/Jul/2024:17:09:49 +0900] "GET /WEB-INF/classes/com/springbook/biz/board/impl/BoardServiceImpl.java HTTP/1.1" 404 721

@@ -9,10 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 @Aspect
 public class BeforeAdvice {
-	@Pointcut("execution(* com.springbook.biz..*Impl.*(..))")
-	public void allPointcut() {}
-	
-	@Before("allPointcut()")
+
+	@Before("PointcutCommon.allPointcut()")
 	public void beforeLog(JoinPoint jp) {
 		/*
 		 * System.out.println("메소드 시그니처 : " + jp.getSignature());
