@@ -22,14 +22,3 @@
       response.sendRedirect("login.jsp");
    }
 %>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Login Page</title>
-</head>
-<body>
-
-</body>
-</html>

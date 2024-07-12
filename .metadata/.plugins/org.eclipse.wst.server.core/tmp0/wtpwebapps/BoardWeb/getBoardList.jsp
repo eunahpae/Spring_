@@ -1,67 +1,74 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@page import="java.util.List" %>
-<%@page import="com.springbook.biz.board.impl.BoardDAO" %>
-<%@page import="com.springbook.biz.board.BoardVO" %>
+<%@page import="java.util.List"%>
+<%@page import="com.springbook.biz.board.BoardVO"%>
+<%@page contentType="text/html; charset=EUC-KR"%>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 
-<%
-   // 1. ì‚¬ìš©ì ì…ë ¥ ì •ë³´ ì¶”ì¶œ
-   // 2. DB ì—°ë™ ì²˜ë¦¬
-   BoardVO vo = new BoardVO();
-   BoardDAO boardDAO = new BoardDAO();
-   List<BoardVO> boardList = boardDAO.getBoardList(vo);
+<%-- <%
+//1. »ç¿ëÀÚ ÀÔ·Â Á¤º¸ ÃßÃâ
+String seq = request.getParameter("seq");
 
-%>
-<!DOCTYPE html>
+// 2. DB ¿¬µ¿ Ã³¸®
+BoardVO vo = new BoardVO();
+vo.setSeq(Integer.parseInt(seq));
+
+BoardDAO boardDAO = new BoardDAO();
+boardDAO.deleteBoard(vo);
+
+// 3. È­¸é ³×ºñ°ÔÀÌ¼Ç
+response.sendRedirect("getBoardList.do");
+%> --%>
+
+<%-- <%
+// ¼¼¼Ç¿¡ ÀúÀåµÈ ±Û ¸ñ·ÏÀ» ²¨³½´Ù.
+List<BoardVO> boardList = (List) session.getAttribute("boardList");
+%> --%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>ê¸€ ëª©ë¡</title>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>±Û ¸ñ·Ï</title>
 </head>
 <body>
-   <center>
-      <h1>ê¸€ ëª©ë¡</h1>
-      <h3>
-         í…ŒìŠ¤íŠ¸ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤...<a href="logout_proc.jsp">Log-out</a>
-      </h3>
-      <!-- ê²€ìƒ‰ ì‹œì‘ -->
-      <form action="getBoardList.jsp" method="post">
-         <table border="1" cellpadding="0" cellspacing="0" width="700">
-            <tr>
-               <td align="right"><select name="searchCondition">
-                     <option value="TITLE">ì œëª©
-                     <option value="CONTENT">ë‚´ìš©
-               </select> <input name="searchKeyword" type="text" /> <input type="submit"
-                  value="ê²€ìƒ‰" /></td>
-            </tr>
-         </table>
-      </form>
-      <!-- ê²€ìƒ‰ ì¢…ë£Œ -->
-      <table border="1" cellpadding="0" cellspacing="0" width="700">
-         <tr>
-            <th bgcolor="orange" width="100">ë²ˆí˜¸</th>
-            <th bgcolor="orange" width="200">ì œëª©</th>
-            <th bgcolor="orange" width="150">ì‘ì„±ì</th>
-            <th bgcolor="orange" width="150">ë“±ë¡ì¼</th>
-            <th bgcolor="orange" width="100">ì¡°íšŒìˆ˜</th>
-         </tr>
-         <%
-            for (BoardVO board : boardList) {
-         %>
-         <tr>
-            <td><%=board.getSeq()%></td>
-            <td align="left"><a href="getBoard.jsp?seq=<%=board.getSeq()%>">
-                  <%=board.getTitle()%></a></td>
-            <td><%=board.getWriter()%></td>
-            <td><%=board.getRegDate()%></td>
-            <td><%=board.getCnt()%></td>
-         </tr>
-         <%
-            }
-         %>
-      </table>
-      <br> <a href="insertBoard.jsp">ìƒˆê¸€ ë“±ë¡</a>
-   </center>
-</body>
+	<center>
+		<h1>±Û ¸ñ·Ï</h1>
+		<h3>
+			Å×½ºÆ®´Ô È¯¿µÇÕ´Ï´Ù...<a href="logout.do">Log-out</a>
+		</h3>
+		<!-- °Ë»ö ½ÃÀÛ -->
+		<form action="getBoardList.jsp" method="post">
+			<table border="1" cellpadding="0" cellspacing="0" width="700">
+				<tr>
+					<td align="right"><select name="searchCondition">
+							<option value="TITLE">Á¦¸ñ
+							<option value="CONTENT">³»¿ë
+					</select> <input name="searchKeyword" type="text" /> <input type="submit"
+						value="°Ë»ö" /></td>
+				</tr>
+			</table>
+		</form>
+		<!-- °Ë»ö Á¾·á -->
+		<table border="1" cellpadding="0" cellspacing="0" width="700">
+			<tr>
+				<th bgcolor="orange" width="100">¹øÈ£</th>
+				<th bgcolor="orange" width="200">Á¦¸ñ</th>
+				<th bgcolor="orange" width="150">ÀÛ¼ºÀÚ</th>
+				<th bgcolor="orange" width="150">µî·ÏÀÏ</th>
+				<th bgcolor="orange" width="100">Á¶È¸¼ö</th>
+			</tr>
+			<c:forEach items="${boardList}" var="board">
+				<tr>
+					<td>${board.seq}</td>
+					<td align="left">
+						<a href="getBoard.do?seq=${board.seq}">${board.title}</a></td>
+					<td>${board.writer}</td>
+					<td>${board.regDate}</td>
+					<td>${board.cnt}</td>
+				</tr>
+			</c:forEach>
 
+		</table>
+		<br> <a href="insertBoard.jsp">»õ ±Û µî·Ï</a>
+	</center>
+</body>
 </html>

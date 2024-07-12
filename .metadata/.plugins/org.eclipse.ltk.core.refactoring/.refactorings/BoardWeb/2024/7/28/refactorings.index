@@ -13,3 +13,24 @@
 1720677520241	Move file
 1720679548233	Rename package 'com.springbook.biz.user.Impl'
 1720682469500	Rename type 'JDBCUtill'
+1720747169260	Rename resource 'insesrtBoard_proc.jsp'
+1720747512697	Copy file
+1720747802536	Copy file
+1720747887117	Copy file
+1720750037779	Delete element
+1720751653509	Delete element
+1720752194142	Delete element
+1720752424435	Delete element
+1720761947733	Copy compilation unit
+1720762207648	Copy compilation unit
+1720762399294	Copy compilation unit
+1720762580926	Copy compilation unit
+1720762717376	Copy compilation unit
+1720762730689	Rename type 'deleteBoardController'
+1720762740140	Rename type 'updateBoardController'
+1720762851601	Copy compilation unit
+1720764976555	Move compilation unit
+1720765072623	Move compilation unit
+1720765077187	Move compilation unit
+1720765080421	Move compilation unit
+1720765084023	Move compilation unit
