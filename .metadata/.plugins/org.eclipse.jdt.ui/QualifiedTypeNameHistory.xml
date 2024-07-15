@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.StrictMath"/>
-    <fullyQualifiedTypeName name="polymorphism.SamsungTV"/>
-    <fullyQualifiedTypeName name="polymorphism.BeanFactory"/>
-    <fullyQualifiedTypeName name="org.springframework.context.support.GenericApplicationContext"/>
-    <fullyQualifiedTypeName name="polymorphism.SonySpeaker"/>
-    <fullyQualifiedTypeName name="java.io.DataOutput"/>
-    <fullyQualifiedTypeName name="com.springbook.ioc.injection.CollectionBean"/>
     <fullyQualifiedTypeName name="java.awt.List"/>
     <fullyQualifiedTypeName name="java.util.Set"/>
     <fullyQualifiedTypeName name="java.util.Map.Entry"/>
@@ -23,7 +16,6 @@
     <fullyQualifiedTypeName name="org.springframework.context.support.AbstractApplicationContext"/>
     <fullyQualifiedTypeName name="org.springframework.context.support.GenericXmlApplicationContext"/>
     <fullyQualifiedTypeName name="com.springbook.biz.board.BoardVO"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
@@ -47,7 +39,6 @@
     <fullyQualifiedTypeName name="org.aspectj.lang.annotation.After"/>
     <fullyQualifiedTypeName name="org.springframework.jdbc.core.support.JdbcDaoSupport"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="javax.sql.DataSource"/>
     <fullyQualifiedTypeName name="org.springframework.jdbc.core.RowMapper"/>
     <fullyQualifiedTypeName name="com.springbook.biz.board.impl.BoardDAOSpring.BoardRowMapper"/>
@@ -56,4 +47,17 @@
     <fullyQualifiedTypeName name="com.springbook.biz.common.JDBCUtill"/>
     <fullyQualifiedTypeName name="com.springbook.biz.board.impl.BoardDAOSpring"/>
     <fullyQualifiedTypeName name="org.aspectj.lang.annotation.Aspect"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="com.springbook.view.user.LoginController"/>
+    <fullyQualifiedTypeName name="com.springbook.view.controller.HandlerMapping"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="com.springbook.view.user.GetBoardListController"/>
+    <fullyQualifiedTypeName name="com.springbook.view.user.GetBoardController"/>
+    <fullyQualifiedTypeName name="com.springbook.view.user.InsertBoardController"/>
+    <fullyQualifiedTypeName name="com.springbook.view.user.UpdateBoardController"/>
+    <fullyQualifiedTypeName name="com.springbook.view.user.DeleteBoardController"/>
+    <fullyQualifiedTypeName name="com.springbook.view.controller.Controller"/>
+    <fullyQualifiedTypeName name="com.springbook.view.controller.ViewResolver"/>
 </qualifiedTypeNameHistroy>
