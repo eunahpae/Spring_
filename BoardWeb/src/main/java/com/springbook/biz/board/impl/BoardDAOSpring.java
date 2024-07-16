@@ -2,12 +2,12 @@ package com.springbook.biz.board.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.springbook.biz.board.BoardVO;
@@ -24,13 +24,12 @@ public class BoardDAOSpring {
 	private final String BOARD_UPDATE = "update board set title=?, content=? where seq=?";
 	private final String BOARD_DELETE = "delete board where seq=?";
 	private final String BOARD_GET = "select * from board where seq=?";
-	private final String BOARD_LIST = "select * from board order by seq desc";
+	private final String BOARD_LIST_T = "SELECT * FROM board WHERE title LIKE '%' || ? || '%' ORDER BY seq DESC";
+	private final String BOARD_LIST_C = "SELECT * FROM board WHERE content LIKE '%' || ? || '%' ORDER BY seq DESC";
 
 	/*
-	 * @Autowired 
-	 * public void setSuperDataSource(DataSource dataSource) {
-	 * super.setDataSource(dataSource); 
-	 * }
+	 * @Autowired public void setSuperDataSource(DataSource dataSource) {
+	 * super.setDataSource(dataSource); }
 	 */
 
 	// CRUD 기능의 메소드 구현
@@ -62,7 +61,16 @@ public class BoardDAOSpring {
 	// 글 목록 조회
 	public List<BoardVO> getBoardList(BoardVO vo) {
 		System.out.println("===> Spring JDBC로 getBoardList() 기능처리");
-		return jdbcTemplate.query(BOARD_LIST, new BoardRowMapper());
+		System.out.println("내용 : " + vo.getSearchKeyword());
+		Object[] args = { vo.getSearchKeyword() };
+		String aa = "임시";
+		System.out.println("args 배열 내용: " + args.toString());
+		if (vo.getSearchCondition().equals("TITLE")) {
+			return jdbcTemplate.query(BOARD_LIST_T, args, new BoardRowMapper());
+		} else if (vo.getSearchCondition().equals("CONTENT")) {
+			return jdbcTemplate.query(BOARD_LIST_C, args, new BoardRowMapper());
+		}
+		return null;
 	}
 
 	public class BoardRowMapper implements RowMapper<BoardVO> {

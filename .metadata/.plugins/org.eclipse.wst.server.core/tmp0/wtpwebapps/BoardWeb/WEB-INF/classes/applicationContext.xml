@@ -9,12 +9,12 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
 	<context:component-scan
-		base-package="com.springbook.biz" />
+		base-package="com.springbook.biz"></context:component-scan>
 	<aop:aspectj-autoproxy />
 
 	<!-- DataSource 설정 -->
 	<context:property-placeholder
-		location="classpath:database.properties" />
+		location="classpath:config/database.properties"></context:property-placeholder>
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driver}" />

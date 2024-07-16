@@ -1,66 +1,67 @@
 <%@page import="java.util.List"%>
 <%@page import="com.springbook.biz.board.BoardVO"%>
-<%@page contentType="text/html; charset=EUC-KR"%>
+<%@page contentType="text/html; charset=UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <%-- <%
-//1. »ç¿ëÀÚ ÀÔ·Â Á¤º¸ ÃßÃâ
+//1. ì‚¬ìš©ìž ìž…ë ¥ ì •ë³´ ì¶”ì¶œ
 String seq = request.getParameter("seq");
 
-// 2. DB ¿¬µ¿ Ã³¸®
+// 2. DB ì—°ë™ ì²˜ë¦¬
 BoardVO vo = new BoardVO();
 vo.setSeq(Integer.parseInt(seq));
 
 BoardDAO boardDAO = new BoardDAO();
 boardDAO.deleteBoard(vo);
 
-// 3. È­¸é ³×ºñ°ÔÀÌ¼Ç
+// 3. í™”ë©´ ë„¤ë¹„ê²Œì´ì…˜
 response.sendRedirect("getBoardList.do");
 %> --%>
 
 <%-- <%
-// ¼¼¼Ç¿¡ ÀúÀåµÈ ±Û ¸ñ·ÏÀ» ²¨³½´Ù.
+// ì„¸ì…˜ì— ì €ìž¥ëœ ê¸€ ëª©ë¡ì„ êº¼ë‚¸ë‹¤.
 List<BoardVO> boardList = (List) session.getAttribute("boardList");
 %> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>±Û ¸ñ·Ï</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title><spring:message code="message.board.list.mainTitle" /></title>
 </head>
 <body>
 	<center>
-		<h1>±Û ¸ñ·Ï</h1>
+		<h1><spring:message code="message.board.list.mainTitle" /></h1>
 		<h3>
-			Å×½ºÆ®´Ô È¯¿µÇÕ´Ï´Ù...<a href="logout.do">Log-out</a>
+			${userName}<spring:message code="message.board.list.welcomeMsg" />...<a href="logout.do">Log-out</a>
 		</h3>
-		<!-- °Ë»ö ½ÃÀÛ -->
-		<form action="getBoardList.jsp" method="post">
+		<!-- ê²€ìƒ‰ ì‹œìž‘ -->
+		<form action="getBoardList.do" method="post">
 			<table border="1" cellpadding="0" cellspacing="0" width="700">
 				<tr>
 					<td align="right"><select name="searchCondition">
-							<option value="TITLE">Á¦¸ñ
-							<option value="CONTENT">³»¿ë
+							<c:forEach items="${conditionMap }" var="option">
+								<option value="${option.value }">${option.key }
+							</c:forEach>
 					</select> <input name="searchKeyword" type="text" /> <input type="submit"
-						value="°Ë»ö" /></td>
+						value="<spring:message code="message.board.list.search.condition.btn" />" /></td>
 				</tr>
 			</table>
 		</form>
-		<!-- °Ë»ö Á¾·á -->
+		<!-- ê²€ìƒ‰ ì¢…ë£Œ -->
 		<table border="1" cellpadding="0" cellspacing="0" width="700">
 			<tr>
-				<th bgcolor="orange" width="100">¹øÈ£</th>
-				<th bgcolor="orange" width="200">Á¦¸ñ</th>
-				<th bgcolor="orange" width="150">ÀÛ¼ºÀÚ</th>
-				<th bgcolor="orange" width="150">µî·ÏÀÏ</th>
-				<th bgcolor="orange" width="100">Á¶È¸¼ö</th>
+				<th bgcolor="orange" width="100"><spring:message code="message.board.list.table.head.seq" /></th>
+				<th bgcolor="orange" width="200"><spring:message code="message.board.list.table.head.title" /></th>
+				<th bgcolor="orange" width="150"><spring:message code="message.board.list.table.head.writer" /></th>
+				<th bgcolor="orange" width="150"><spring:message code="message.board.list.table.head.regDate" /></th>
+				<th bgcolor="orange" width="100"><spring:message code="message.board.list.table.head.cnt" /></th>
 			</tr>
 			<c:forEach items="${boardList}" var="board">
 				<tr>
 					<td>${board.seq}</td>
-					<td align="left">
-						<a href="getBoard.do?seq=${board.seq}">${board.title}</a></td>
+					<td align="left"><a href="getBoard.do?seq=${board.seq}">${board.title}</a></td>
 					<td>${board.writer}</td>
 					<td>${board.regDate}</td>
 					<td>${board.cnt}</td>
@@ -68,7 +69,7 @@ List<BoardVO> boardList = (List) session.getAttribute("boardList");
 			</c:forEach>
 
 		</table>
-		<br> <a href="insertBoard.jsp">»õ ±Û µî·Ï</a>
+		<br> <a href="insertBoard.jsp"><spring:message code="message.board.list.link.insertBoard" /></a>
 	</center>
 </body>
 </html>
