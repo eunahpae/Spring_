@@ -11,5 +11,7 @@ D:\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3285195898.index
 \BoardWeb\src\main\java
 D:\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1985579192.index
 \BoardWeb\src\main\java
+D:\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2952568192.index
+\Board\src\main\java
 D:\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4008603857.index
 \BoardWeb\src\main\java
