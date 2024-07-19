@@ -11,28 +11,30 @@
 		(#{title},#{content},#{writer})
 	</insert>
 
+	<!-- 모든 게시글 목록 조회 -->
 	<select id="getList" resultType="com.lbi.model.BoardVO">
 		select * from lbi_board
 	</select>
 
+	<!-- 특정 게시글 조회 -->
 	<select id="getPage" resultType="com.lbi.model.BoardVO">
 		select * from lbi_board where
 		bno = #{bno}
 	</select>
 
+	<!-- 게시글 수정 -->
 	<update id="modify">
 		update lbi_board set title = #{title}, content =
 		#{content},
 		updatedate = sysdate where bno = #{bno}
 	</update>
 
+	<!-- 게시글 삭제 -->
 	<delete id="delete">
 		delete from lbi_board where bno = #{bno}
 	</delete>
 
-
-
-	<!-- 검색 조건문 -->
+	<!-- 동적 검색 조건 -->
 	<sql id="criteria">
 		<trim prefix="AND (" suffix=")" prefixOverrides="OR">
 			<foreach collection="typeArr" item="type">
@@ -53,21 +55,23 @@
 		</trim>
 	</sql>
 
+	<!-- 페이징 처리된 게시글 목록 조회 -->
 	<select id="getListPaging" resultType="com.lbi.model.BoardVO">
-	<![CDATA[
+		<![CDATA[
 		select bno, title, content, writer, regdate, updatedate from(
 		select rownum as rn, bno, title, content, writer, regdate, updatedate
 		from lbi_board where rownum <= #{pageNum} * #{amount}
-	]]>
+		]]>
 		<if test="keyword != null">
 			<include refid="criteria"></include>
 		</if>
-	<![CDATA[
+		<![CDATA[
 		)
 		where rn > (#{pageNum} - 1) * #{amount}
-	]]>
+		]]>
 	</select>
 
+	<!-- 전체 게시글 수 조회 -->
 	<select id="getTotal" resultType="int">
 		select count(*) from lbi_board
 		<if test="keyword != null">

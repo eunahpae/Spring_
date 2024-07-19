@@ -7,30 +7,47 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- Root Context: 모든 웹 구성 요소에서 공유하는 공통 리소스 정의 -->
 
+	<!-- HikariCP 설정 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<!-- JDBC 드라이버 클래스명 설정 -->
 		<property name="driverClassName"
 			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+		<!-- 데이터베이스 접속 URL 설정 -->
 		<property name="jdbcUrl"
 			value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE" />
+		<!-- 데이터베이스 접속 계정 정보 설정 -->
 		<property name="username" value="spring" />
 		<property name="password" value="1234" />
 	</bean>
 
+	<!-- HikariCP 데이터소스 설정 -->
+	<!-- HikariCP는 자바 어플리케이션에서 사용되는 고성능 JDBC 커넥션 풀 라이브러리. 
+		JDBC 커넥션 풀은 데이터베이스와의 연결을 관리하고, 어플리케이션에서 데이터베이스에 접근할 때 효율적으로 리소스를 관리하는 역할을 한다. 
+		HikariCP는 경량화된 디자인과 뛰어난 성능으로 유명하다. 특히 멀티 스레드 환경에서도 효율적으로 동작하여, 어플리케이션의 성능을 최적화하는 데 도움을 준다. 
+		또한 설정이 간단하고, 초기화 시간이 빠르며, 데이터베이스 연결과 관련된 많은 부분을 자동으로 관리할 수 있어 개발자가 데이터베이스 접속 설정에 신경을 덜 쓸 수 있게 해준다. 
+		따라서 HikariCP는 현대의 자바 기반 어플리케이션에서 많이 사용되며, 데이터베이스와의 효율적인 연결 관리를 위한 필수적인 도구로 평가받고 있다. -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 		destroy-method="close">
 		<constructor-arg ref="hikariConfig" />
 	</bean>
 
+	<!-- MyBatis SqlSessionFactory 설정 -->
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 데이터소스 설정 -->
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
+	<!-- MyBatis Mapper 스캔 설정 -->
 	<mybatis-spring:scan base-package="com.lbi.mapper" />
+
+	<!-- 컴포넌트 스캔 설정: 모델 패키지 -->
 	<context:component-scan
 		base-package="com.lbi.model" />
+
+	<!-- 컴포넌트 스캔 설정: 서비스 패키지 -->
 	<context:component-scan
 		base-package="com.lbi.service" />
 
