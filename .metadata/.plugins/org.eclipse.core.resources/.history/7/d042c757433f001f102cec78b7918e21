@@ -1,5 +1,0 @@
-jdbc.driver=oracle.jdbd.driver.OracleDriver
-jdbc.url=jdbc:oracle:thin:@localhost:1521:XE
-jdbc.username = spring
-jdbc.password = 1234
-

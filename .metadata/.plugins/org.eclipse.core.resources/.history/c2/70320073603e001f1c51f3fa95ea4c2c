@@ -1,5 +1,0 @@
-package com.springbook.biz.user.Impl;
-
-public class UserDAO {
-
-}
