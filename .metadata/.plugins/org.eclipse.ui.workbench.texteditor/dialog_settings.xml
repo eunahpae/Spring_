@@ -5,13 +5,18 @@
 		<item key="DIALOG_Y_ORIGIN" value="396"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="junit"/>
+		<item key="selection" value="che"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="che"/>
+			<item value="›"/>
+			<item value="‹"/>
+			<item value="BoardService"/>
+			<item value="Service"/>
 			<item value="JUnit"/>
 			<item value="junit"/>
 			<item value="log4"/>
@@ -23,6 +28,8 @@
 			<item value="getJdbcTemplate()"/>
 		</list>
 		<list key="replacehistory">
+			<item value="&gt;"/>
+			<item value="&lt;"/>
 			<item value="mybatis"/>
 			<item value="jdbcTemplate"/>
 		</list>

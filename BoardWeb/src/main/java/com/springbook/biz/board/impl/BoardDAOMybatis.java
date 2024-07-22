@@ -42,7 +42,7 @@ public class BoardDAOMybatis {
 
 	// 글 목록 조회
 	public List<BoardVO> getBoardList(BoardVO vo) {
-		System.out.println("===> MybatisC로 getBoardList() 기능처리");
+		System.out.println("===> Mybatis로 getBoardList() 기능처리");
 		return mybatis.selectList("BoardDAO.getBoardList", vo);
 	}
 
